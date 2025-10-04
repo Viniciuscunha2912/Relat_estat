@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório Técnico - Tamanho e Quantidade de Parcelas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2E6DA4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #aaa;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0 30px 0;
+            border: 1px solid #ccc;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📄 Relatório Técnico: Definição do Tamanho e Quantidade de Parcelas Amostrais</h1>
+
+<h2>🔎 Objetivo</h2>
+<p>
+    Estabelecer, com base em critérios estatísticos e práticos, a <strong>área individual das parcelas</strong> e a 
+    <strong>quantidade total necessária</strong>, visando garantir <strong>representatividade</strong>, <strong>precisão</strong> e 
+    <strong>poder estatístico adequado</strong> para análises comparativas entre algoritmos de geração de Modelos Digitais do Terreno (MDT).
+</p>
+
+<h2>📍 Área de Estudo</h2>
+<ul>
+    <li><strong>Localização:</strong> Angatuba - SP</li>
+    <li><strong>Área total:</strong> 81,06 hectares (ha)</li>
+</ul>
+<!-- Imagem área de estudo -->
+<img src="Teste_piloto.png" alt="Área de estudo">
+
+<h2>🧪 Teste Piloto Inicial</h2>
+<ul>
+    <li><strong>Número de parcelas:</strong> 29</li>
+    <li><strong>Área por parcela:</strong> 400 m² (ex: 20 m × 20 m)</li>
+    <li><strong>Total amostrado:</strong> 11.600 m² (~1,43% da área total)</li>
+    <li><strong>Tipo de análise:</strong> Teste t pareado</li>
+    <li><strong>Resultado:</strong> Poder estatístico observado variou entre <strong>19% e 36%</strong>, insuficiente para conclusões robustas.</li>
+</ul>
+<!-- Gráfico tamanho amostral piloto vs necessário -->
+<img src="Grafico_Tamanho_Amostral_pilotoVSnecessario.png" alt="Tamanho amostral piloto vs necessário">
+
+<h2>📊 Cálculo do Tamanho Amostral</h2>
+<p>
+    Com base nos <strong>tamanhos de efeito observados</strong> no piloto, foi utilizado o método de análise de poder (<code>TTestPower</code>) para estimar o número mínimo de parcelas necessárias para alcançar <strong>níveis desejáveis de poder estatístico</strong> (probabilidade de detectar um efeito real quando ele existe).
+</p>
+
+<h3>➤ Parâmetros utilizados:</h3>
+<table>
+    <tr>
+        <th>Parâmetro</th><th>Valor</th>
+    </tr>
+    <tr><td>Teste</td><td>t pareado (bilateral)</td></tr>
+    <tr><td>Alfa (nível de sig.)</td><td>0,05</td></tr>
+    <tr><td>Poder desejado</td><td>80%, 90%, 95%</td></tr>
+    <tr><td>Tamanhos de efeito</td><td>Entre 0,21 e 0,31 (médio-baixo)</td></tr>
+</table>
+
+<h3>➤ Resultados:</h3>
+<ul>
+    <li>Para <strong>80%</strong> de poder, são necessárias entre <strong>110 a 185 parcelas</strong>, dependendo do par de algoritmos/resolução.</li>
+    <li>Para <strong>90%</strong>, entre <strong>147 a 248 parcelas</strong>.</li>
+    <li>Para <strong>95%</strong>, entre <strong>175 a 293 parcelas</strong>.</li>
+</ul>
+<!-- Gráfico final tamanho amostral -->
+<img src="Grafico_Final_tamanho_amostral.png" alt="Gráfico final tamanho amostral">
+
+<h2>✅ Decisão Final</h2>
+<table>
+    <tr>
+        <th>Parâmetro</th>
+        <th>Valor</th>
+    </tr>
+    <tr><td><strong>Número de parcelas</strong></td><td><strong>300</strong></td></tr>
+    <tr><td><strong>Área de cada parcela</strong></td><td><strong>400 m²</strong> (formato quadrado, 20×20 m)</td></tr>
+    <tr><td><strong>Área amostrada total</strong></td><td><strong>12 hectares</strong></td></tr>
+    <tr><td><strong>Proporção da área total</strong></td><td><strong>~14,8%</strong> da área de estudo (81,06 ha)</td></tr>
+</table>
+
+<p>Essa configuração garante:</p>
+<ul>
+    <li>Poder estatístico suficiente para detectar <strong>diferenças reais</strong> entre métodos.</li>
+    <li>Amostragem <strong>espacialmente representativa</strong> da paisagem.</li>
+    <li>Equilíbrio entre <strong>precisão estatística</strong> e <strong>viabilidade logística</strong>.</li>
+</ul>
+
+<h2>📚 Referências Estatísticas Utilizadas</h2>
+<ul>
+    <li>Cohen, J. (1988). <i>Statistical Power Analysis for the Behavioral Sciences</i>.</li>
+    <li>G*Power Guidelines (Faul et al., 2009).</li>
+    <li>Statsmodels – <code>TTestPower</code> (Python)</li>
+</ul>
+
+</body>
+</html>
